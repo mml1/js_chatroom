@@ -1,6 +1,13 @@
 <html>
 <head>
 	<title>Chatroom</title>
+	<style type="text/css">
+		#board{
+			border: 1px solid #000000;
+			width:500px;
+			height: 600px;
+		}
+	</style>
 	<script type="text/javascript" src = "http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src = "/socket.io/socket.io.js"></script>
 	<script type="text/javascript">
@@ -9,13 +16,31 @@
 			var name = prompt("Your name:");
 
 			socket.on("on", function(data){
-				
+				for(var i = 0; i < data.length; i++){
+					$(#board).append("<p>" + data[i].name + ":" + data[i].message + "</p>");
+				}
+
+			});
+			$("form").submit(function(e){
+				e.preventDefault();
+				socket.emit("mess_sent", {name: name, mess: $("input").val()});
+			});
+			socket.on("update_chat", function(data){
+				$("#board").append("<p>", data.name, ":", data.message, "</p>");
 			});
 		});
 
 	</script>
 </head>
 <body>
+	<div class = "container">
+		<div id = "board">
+			<form>
+				<input type = "text" name = "mess">
+				<input type = "submit" value = "send">
+			</form>
+		</div>
+	</div>
 
 </body>
 </html>
