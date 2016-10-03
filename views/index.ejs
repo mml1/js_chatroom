@@ -1,0 +1,21 @@
+<html>
+<head>
+	<title>Chatroom</title>
+	<script type="text/javascript" src = "http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src = "/socket.io/socket.io.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var socket = io.connect();
+			var name = prompt("Your name:");
+
+			socket.on("on", function(data){
+				
+			});
+		});
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>
