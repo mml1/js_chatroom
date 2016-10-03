@@ -18,6 +18,7 @@ var room = [];
 io.sockets.on("connection", function(socket){
 	io.emit("on", room);
 	socket.on("mess_sent", function(data){
+		console.log(data, "in server")
 		room.push({"name": data.name, "message": data.mess})
 		io.emit("update_chat", {name: data.name, message: data.mess})
 	});

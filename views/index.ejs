@@ -13,11 +13,12 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 			var socket = io.connect();
+			console.log("hjello")
 			var name = prompt("Your name:");
 
 			socket.on("on", function(data){
 				for(var i = 0; i < data.length; i++){
-					$(#board).append("<p>" + data[i].name + ":" + data[i].message + "</p>");
+					$("#board").append("<p>" + data[i].name + ":" + data[i].message + "</p>");
 				}
 
 			});
@@ -34,12 +35,11 @@
 </head>
 <body>
 	<div class = "container">
-		<div id = "board">
-			<form>
-				<input type = "text" name = "mess">
-				<input type = "submit" value = "send">
-			</form>
-		</div>
+		<div id = "board"></div>
+		<form>
+			<input type = "text" name = "mess">
+			<input type = "submit" value = "send">
+		</form>
 	</div>
 
 </body>
