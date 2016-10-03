@@ -13,7 +13,6 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 			var socket = io.connect();
-			console.log("hjello")
 			var name = prompt("Your name:");
 
 			socket.on("on", function(data){
